@@ -559,7 +559,7 @@ public class IRbuilder implements ASTVisitor {
 			resMap.put(node, pointer);
 		}
 	}
-	
+
 	private LinkedList<HashMap<VariableSymbol,VirtualRegister>> inlineVR;
 	private LinkedList<BasicBlock> inlineAfter;
 	private HashMap<FunctionSymbol,Integer> operationsCountMap;
@@ -843,11 +843,11 @@ public class IRbuilder implements ASTVisitor {
 				curBB.append(new BinaryInst(curBB, bop, null, orhs));
 				curBB.append(new MoveInst(curBB, result, vrax));
 			} else {
-				if (op.equals("%") && orhs instanceof Immediate && ((Immediate)orhs).value == 10000) {
+				/*if (op.equals("%") && orhs instanceof Immediate && ((Immediate)orhs).value == 10000) {
 					curBB.append(new CallInst(curBB, vrax, lib_mod, olhs));
 					curBB.append(new MoveInst(curBB, result, vrax));
 				}
-				else {
+				else {*/
 					curBB.append(new MoveInst(curBB, vrax, olhs));
 					curBB.append(new CdqInst(curBB));
 					curBB.append(new BinaryInst(curBB, bop, null, orhs));
@@ -856,7 +856,7 @@ public class IRbuilder implements ASTVisitor {
 					} else {
 						curBB.append(new MoveInst(curBB, result, vrdx));
 					}
-				}
+				//}
 			}
 		}
 		return result;
